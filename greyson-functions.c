@@ -29,6 +29,7 @@ float getMilesDriven(Trip *trip){
     for (int day=0; day < daysSpent; day++){
         miles += trip->day[day].milesDriven;
     }
+    return miles;
 }
 
 void setMilesDriven(Trip *trip, float miles){

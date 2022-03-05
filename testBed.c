@@ -9,7 +9,9 @@ int main(){
     trip1.day[1].milesDriven = 7;
     trip1.day[2].milesDriven = 9;
     float totalMiles = getMilesDriven(&trip1);
+    printf("Total miles driven: %f\n", totalMiles);
     setMilesDriven(&trip1, 10);
+    totalMiles = getMilesDriven(&trip1);
     printf("Total miles driven: %f", totalMiles);
     return 0;
 }
