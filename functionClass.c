@@ -14,12 +14,12 @@ void setDepartTime(struct Trip *trip, int time){
     trip->departTime = time;
 }
 
-void setTaxiFees(struct Trip *trip, float taxiFee){
-    trip->day[0].taxiCost = taxiFee;
+void setTaxiFees(struct Day *day, float taxiFee){
+    day->taxiCost = taxiFee;
 }
 
-void setHotelExpenses(struct Trip *trip, float hotelExpenses){
-    trip->day[0].hotelCost = hotelExpenses;
+void setHotelExpenses(struct Day *day, float hotelExpenses){
+    day->hotelCost = hotelExpenses;
 }
 
 void setRoundTripAirfare(struct Trip *trip, float airCost){
@@ -59,7 +59,7 @@ float getHotelFees(struct Trip *trip){
 }
 
 float getRoundTripAirfare(struct Trip *trip){
-    return trip -> airfareCost;
+    return trip->airfareCost;
 }
 
 
