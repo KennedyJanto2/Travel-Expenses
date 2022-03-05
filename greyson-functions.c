@@ -9,15 +9,21 @@ float getCarRentals(Trip *trip){
 }
 
 void setCarRentals(Trip *trip, float cost){
+    if (cost < 0){
+        return;
+    }
     trip->rentalCost = cost;
 }
 
 int getDaysSpent(Trip *trip){ //Awaiting testing, seems like a hacky way to implement
-    return sizeof(trip->day)/(sizeof(trip->day[0]));
+    return trip->daysSpent; //(trip->day)/(sizeof(trip->day[0]));
 }
 
-void setDaysSpent(Trip *trip){ //Not sure how to interpret this or whether to do
-    
+void setDaysSpent(Trip *trip, int days){ //Not sure how to interpret this or whether to do
+    if (days < 0){
+        return;
+    }
+    trip->daysSpent = days;
 }
 
 float getMilesDriven(Trip *trip){
@@ -30,6 +36,9 @@ float getMilesDriven(Trip *trip){
 }
 
 void setMilesDriven(Day *day, float miles){
+    if (miles < 0){
+        return;
+    }
     day->milesDriven = miles;
 }
 
@@ -43,6 +52,9 @@ float getParkingCost(Trip *trip){
 }
 
 void setParkingCost(Day *day, float cost){
+    if (cost < 0){
+        return;
+    }
     day->parkingCost = cost;
 }
 
@@ -56,5 +68,27 @@ float getTaxiCost(Trip *trip){
 }
 
 void setTaxiCost(Day *day, float cost){
+    if (cost < 0){
+        return;
+    }
     day->taxiCost = cost;
+}
+
+void ReimbursableExpenses(Trip *trip){
+    int spent = TotalExpenses(&trip);
+    int allowed = TotalAllowableExpenses(&trip);
+    if (spent > allowed){
+        return spent - allowed;
+    }
+    return 0;
+}
+
+void AmountSaved(Trip *trip){
+    int spent = TotalExpenses(&trip);
+    int allowed = TotalAllowableExpenses(&trip);
+
+    if (spent < allowed){
+        return allowed - spent;
+    }
+    return 0;
 }

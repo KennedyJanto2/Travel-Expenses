@@ -18,6 +18,7 @@ typedef struct Trip {     //Allows use of Trip alone instead of struct Trip
     int arrivalTime;
     float hotelCost;        //Does this belong in day or trip?
     float eventCost;        //Does this belong in day or trip?
+    int daysSpent;
 } Trip;
 
 float getCarRentals(Trip *trip);
@@ -26,7 +27,7 @@ void setCarRentals(Trip *trip, float cost);
 
 int getDaysSpent(Trip *trip);
 
-void setDaysSpent(Trip *trip);
+void setDaysSpent(Trip *trip, int days);
 
 float getMilesDriven(Trip *trip);
 
@@ -39,4 +40,8 @@ void setParkingCost(Day *day, float cost);
 float getTaxiCost(Trip *trip);
 
 void setTaxiCost(Day *day, float cost);
+
+float ReimbursableExpenses(Trip *trip);
+
+float AmountSaved(Trip *trip);
 #endif
