@@ -3,9 +3,6 @@
 
 typedef enum { false, true } bool;
 
-void helloWorld(){
-    printf("Hello world! This is the initial commit for Project 2 - CS2600 Spring '22.");
-}
 
 float getCarRentals(Trip *trip){
     return trip->rentalCost;
@@ -19,8 +16,8 @@ int getDaysSpent(Trip *trip){ //Awaiting testing, seems like a hacky way to impl
     return sizeof(trip->day)/(sizeof(trip->day[0]));
 }
 
-void setDaysSpent(Trip *trip){
-
+void setDaysSpent(Trip *trip){ //Not sure how to interpret this or whether to do
+    
 }
 
 float getMilesDriven(Trip *trip){
@@ -32,14 +29,32 @@ float getMilesDriven(Trip *trip){
     return miles;
 }
 
-void setMilesDriven(Trip *trip, float miles){
-    trip->day[0].milesDriven = miles;
+void setMilesDriven(Day *day, float miles){
+    day->milesDriven = miles;
 }
 
 float getParkingCost(Trip *trip){
-
+    float cost = 0;
+    int daysSpent = getDaysSpent(trip);
+    for (int day=0; day < daysSpent; day++){
+        cost += trip->day[day].parkingCost;
+    }
+    return cost;
 }
 
-void setParkingCost(Trip *trip){
+void setParkingCost(Day *day, float cost){
+    day->parkingCost = cost;
+}
 
+float getTaxiCost(Trip *trip){
+    float cost = 0;
+    int daysSpent = getDaysSpent(trip);
+    for (int day=0; day < daysSpent; day++){
+        cost += trip->day[day].taxiCost;
+    }
+    return cost;
+}
+
+void setTaxiCost(Day *day, float cost){
+    day->taxiCost = cost;
 }

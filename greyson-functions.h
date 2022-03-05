@@ -7,7 +7,7 @@ typedef struct Day {
     float taxiCost;
     float milesDriven;
     float parkingCost;
-    float mealExpenses;
+    float meals[3]; // 0: Breakfast, 1: Lunch, 2: Dinner
 } Day;
 
 typedef struct Trip {     //Allows use of Trip alone instead of struct Trip
@@ -20,8 +20,6 @@ typedef struct Trip {     //Allows use of Trip alone instead of struct Trip
     float eventCost;        //Does this belong in day or trip?
 } Trip;
 
-void helloworld(Trip *trip);
-
 float getCarRentals(Trip *trip);
 
 void setCarRentals(Trip *trip, float cost);
@@ -32,9 +30,13 @@ void setDaysSpent(Trip *trip);
 
 float getMilesDriven(Trip *trip);
 
-void setMilesDriven(Trip *trip, float miles);
+void setMilesDriven(Day *day, float miles);
 
 float getParkingCost(Trip *trip);
 
-void setParkingCost(Trip *trip);
+void setParkingCost(Day *day, float cost);
+
+float getTaxiCost(Trip *trip);
+
+void setTaxiCost(Day *day, float cost);
 #endif
