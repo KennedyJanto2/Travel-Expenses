@@ -1,42 +1,65 @@
 #include greyson-functions.h
 
-void setDaysSpent(struct Trip *trip, int days){
-    trip->day.size() + 1;
-}
-
-void setCarRentals(struct Trip *trip, int price){
-    trip->rentalCost = price;
-}
-
-void setParkingFees(struct Day *day, int parkingFee){
-    day->parkingCost = parkingFee;
-}
+//Setters:
 
 void setRegistrationFees(struct Trip *trip, int registrationFee){
     trip->eventCost = registrationFee;
 }
 
-void setMealExpenses(struct Day *day, int mealCost){
-    day->mealExpenses = mealCost;
+void setArrivalTime(struct Trip *trip, int time){
+    trip->arrivalTime = time;
 }
 
-int getDaysSpent(){
-    return trip->day;
+void setDepartTime(struct Trip *trip, int time){
+    trip->departTime = time;
 }
 
-float getCarRentals(){
-    return trip->rentalCost;
+void setTaxiFees(struct Trip *trip, float taxiFee){
+    trip->day[0].taxiCost = taxiFee;
 }
 
-float getParkingFees(){
-    return day->parkingCost;
+void setHotelExpenses(struct Trip *trip, float hotelExpenses){
+    trip->day[0].hotelCost = hotelExpenses;
 }
 
-float getRegistrationFees(){
-    return day->evenCost;
+void setRoundTripAirfare(struct Trip *trip, float airCost){
+    trip->airfareCost = airCost;
 }
 
-float getMealExpenses(){
-    return day-> mealExpenses;
+//Getters:
+
+float getRegistrationFees(struct Trip *trip){
+    return trip->eventCost;
 }
+
+int getArrivalTime(struct Trip *trip){
+    return trip->arrivalTime;
+}
+
+int getDepartTime(struct Trip *trip){
+    return trip->departTime;
+}
+
+float getTaxiFees(struct Trip *trip){
+    float taxiFee = 0;
+    int daysSpent = getDaysSpent(trip);
+    for(int day = 0; day < daysSpent; day++){
+        taxiFee += trip->day[day].taxiCost;
+    }
+    return taxiFee;
+}
+
+float getHotelFees(struct Trip *trip){
+    float hotelFee = 0;
+    int daysSpent = getDaysSpent(trip);
+    for(int day = 0; day < daysSpent; day++){
+        hotelFee += trip->day[day].hotelCost;
+    }
+    return hotelFee;
+}
+
+float getRoundTripAirfare(struct Trip *trip){
+    return trip -> airfareCost;
+}
+
 
