@@ -12,8 +12,12 @@ void setParkingFees(struct Day *day, int parkingFee){
     day->parkingCost = parkingFee;
 }
 
-void setMealExpenses(){
+void setRegistrationFees(struct Trip *trip, int registrationFee){
+    trip->eventCost = registrationFee;
+}
 
+void setMealExpenses(struct Day *day, int mealCost){
+    day->mealExpenses = mealCost;
 }
 
 int getDaysSpent(){
@@ -28,7 +32,11 @@ float getParkingFees(){
     return day->parkingCost;
 }
 
-float getMealExpenses(){
+float getRegistrationFees(){
+    return day->evenCost;
+}
 
+float getMealExpenses(){
+    return day-> mealExpenses;
 }
 
