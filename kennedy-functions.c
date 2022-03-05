@@ -14,10 +14,6 @@ void setDepartTime(struct Trip *trip, int time){
     trip->departTime = time;
 }
 
-void setTaxiFees(struct Day *day, float taxiFee){
-    day->taxiCost = taxiFee;
-}
-
 void setHotelExpenses(struct Day *day, float hotelExpenses){
     day->hotelCost = hotelExpenses;
 }
@@ -40,16 +36,7 @@ int getDepartTime(struct Trip *trip){
     return trip->departTime;
 }
 
-float getTaxiFees(struct Trip *trip){
-    float taxiFee = 0;
-    int daysSpent = getDaysSpent(trip);
-    for(int day = 0; day < daysSpent; day++){
-        taxiFee += trip->day[day].taxiCost;
-    }
-    return taxiFee;
-}
-
-float getHotelFees(struct Trip *trip){
+float getHotelExpenses(struct Trip *trip){
     float hotelFee = 0;
     int daysSpent = getDaysSpent(trip);
     for(int day = 0; day < daysSpent; day++){
@@ -106,4 +93,16 @@ float totalAllowableExpenses(struct Trip *trip){
     return total;
 }
 
+float TotalExpenses(struct Trip *trip){
+    float total = 0;
+    total += getParkingCost(trip);
+    total += getTaxiCost(trip);
+    total += getCarRentals(trip);
+    total += getHotelExpenses(trip);
+    total += getRegistrationFees(trip);
+    total += getMealExpenses(trip);
+    total += getRoundTripAirfare(trip);
+
+    return total;
+}
 
