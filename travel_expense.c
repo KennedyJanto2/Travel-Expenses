@@ -28,9 +28,11 @@ int main()
             printf("Number of days cannot be less than 1! Try again!\n");
     }
 
+
+
     while(!timeFormat(departTime)){
         printf("The time of departure on the first day of the trip:[##:## AM/PM] ");
-        scanf("%s",departTime);
+        scanf("%s",arrivalTime);
 
         if(!timeFormat(departTime))
             printf("Wrong depart time format!\n");
@@ -46,38 +48,38 @@ int main()
 }
 
 bool timeFormat(char validTime[]){
+  
     int counter = 0;
     if(isdigit(validTime[counter])){ 
 
-        if(validTime[counter] == '1' && isdigit(validTime[counter+1])){
+        if(validTime[counter] == '1'){
             counter++;
-            if(validTime[counter] >= '0' && validTime[counter] <='9'){
+            if(isdigit(validTime[counter]))
                 counter++;
-            }
+            
         }
 
-        else if(validTime[counter] >= '0' && validTime[counter] <='9')
-            counter++;
+        else if(isdigit(validTime[counter]))
+            counter=1;
 
         else    
             return false;
 
         if(validTime[counter] == ':'){
             counter++;
-            if(isdigit(validTime[counter])&& isdigit(validTime[counter+1])){
-                if(validTime[counter] >= '0' && validTime[counter] <='9' && validTime[counter+1] >= '0' && validTime[counter+1] <='9'){
-                    counter+=2;
-                    if(validTime[counter] == ' '){
-                        counter++;
-                        if((validTime[counter] == 'A' || validTime[counter] == 'P') && validTime[counter+1] == 'M')
-                            return true;
+            if(isdigit(validTime[counter]) && isdigit(validTime[counter+1])){
+                counter+=2;
+                if(validTime[counter] == ' '){
+                    counter++;
+                    if((validTime[counter] == 'A' || validTime[counter] == 'P') && validTime[counter+1] == 'M')
+                        return true;
 
-                    }
+                    
+                
                 }
+
             }
-
         }
-
     }
 
     return false;
