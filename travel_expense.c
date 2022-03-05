@@ -28,9 +28,10 @@ int main()
             printf("Number of days cannot be less than 1! Try again!\n");
     }
 
+    printf("\n%d\n",timeFormat("2:00 PM"));
 
 
-    while(!timeFormat(departTime)){
+    while(timeFormat(departTime)==false){
         printf("The time of departure on the first day of the trip:[##:## AM/PM] ");
         scanf("%s",arrivalTime);
 
@@ -39,7 +40,7 @@ int main()
         
     }
 
-    while(!timeFormat(arrivalTime)){
+    while(!timeFormat(arrivalTime)==false){
         printf("The time of arrival back home on the last day of the trip:[##:## AM/PM] ");
         scanf("%s",arrivalTime);
         if(!timeFormat(arrivalTime))
