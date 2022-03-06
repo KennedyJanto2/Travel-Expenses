@@ -78,8 +78,9 @@ float totalAllowableExpenses(struct Trip *trip){
         total += 16;
     }
 
+    int days = trip->daysSpend - 2;
     //every other day
-    for(int i = 0; i < trip->daysSpent - 2; i++){
+    for(int i = 0; i < days; i++){
         total += 6;         //parking fees
         total += 10;        //taxi fee
         total += 90;        //hotel fee
