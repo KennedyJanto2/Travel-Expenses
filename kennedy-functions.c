@@ -1,42 +1,42 @@
-#include greyson-functions.h
+#include travelexpenses.h
 
 //Setters:
 
-void setRegistrationFees(struct Trip *trip, int registrationFee){
+void setRegistrationFees(Trip *trip, int registrationFee){
     trip->eventCost = registrationFee;
 }
 
-void setArrivalTime(struct Trip *trip, int time){
+void setArrivalTime(Trip *trip, int time){
     trip->arrivalTime = time;
 }
 
-void setDepartTime(struct Trip *trip, int time){
+void setDepartTime(Trip *trip, int time){
     trip->departTime = time;
 }
 
-void setHotelExpenses(struct Day *day, float hotelExpenses){
+void setHotelExpenses(Day *day, float hotelExpenses){
     day->hotelCost = hotelExpenses;
 }
 
-void setRoundTripAirfare(struct Trip *trip, float airCost){
+void setRoundTripAirfare(Trip *trip, float airCost){
     trip->airfareCost = airCost;
 }
 
 //Getters:
 
-float getRegistrationFees(struct Trip *trip){
+float getRegistrationFees(Trip *trip){
     return trip->eventCost;
 }
 
-int getArrivalTime(struct Trip *trip){
+int getArrivalTime(Trip *trip){
     return trip->arrivalTime;
 }
 
-int getDepartTime(struct Trip *trip){
+int getDepartTime(Trip *trip){
     return trip->departTime;
 }
 
-float getHotelExpenses(struct Trip *trip){
+float getHotelExpenses(Trip *trip){
     float hotelFee = 0;
     int daysSpent = getDaysSpent(trip);
     for(int day = 0; day < daysSpent; day++){
@@ -45,11 +45,11 @@ float getHotelExpenses(struct Trip *trip){
     return hotelFee;
 }
 
-float getRoundTripAirfare(struct Trip *trip){
+float getRoundTripAirfare(Trip *trip){
     return trip->airfareCost;
 }
 
-float totalAllowableExpenses(struct Trip *trip){
+float totalAllowableExpenses(Trip *trip){
     float total = 0;
 
     //first day, breakfast allowed before 7am
@@ -94,15 +94,15 @@ float totalAllowableExpenses(struct Trip *trip){
     return total;
 }
 
-float TotalExpenses(struct Trip *trip){
+float TotalExpenses(Trip *trip){
     float total = 0;
-    total += getParkingCost(trip);
-    total += getTaxiCost(trip);
-    total += getCarRentals(trip);
-    total += getHotelExpenses(trip);
-    total += getRegistrationFees(trip);
-    total += getMealExpenses(trip);
-    total += getRoundTripAirfare(trip);
+    total += getParkingCost(&trip);
+    total += getTaxiCost(&trip);
+    total += getCarRentals(&trip);
+    total += getHotelExpenses(&trip);
+    total += getRegistrationFees(&trip);
+    total += getMealExpenses(&trip);
+    total += getRoundTripAirfare(&trip);
 
     return total;
 }
