@@ -34,7 +34,7 @@ int main()
         if(day < 1)
             printf("Number of days cannot be less than 1! Try again!\n");
     }
-    /*
+    
     getchar();
 
     // departing time input
@@ -151,7 +151,7 @@ int main()
         scanf("%d",&nightStayed);
     }
 
-    */
+    
 
     // The amount of each meal eaten
     float breakfastCost[day],lunchCost[day],dinnerCost[day];
@@ -206,8 +206,6 @@ int main()
         printf("\nThe amounts of allowable meals: $");
         scanf("%f",&allowableMealAmount);
     }
-
-    
     
 }
 
