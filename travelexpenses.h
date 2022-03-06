@@ -7,7 +7,10 @@ typedef struct Day {
     float taxiCost;
     float milesDriven;
     float parkingCost;
-    float meals[3]; // 0: Breakfast, 1: Lunch, 2: Dinner
+    float breakfastCost;
+    float lunchCost;
+    float dinnerCost;
+    float meals[3]; //Breakfast = [0], Lunch = [1], Dinner = [2]
 } Day;
 
 typedef struct Trip {     //Allows use of Trip alone instead of struct Trip
@@ -67,8 +70,8 @@ float totalAllowableExpenses(Trip *trip);
 
 float TotalExpenses(Trip *trip);
 
-void setMealExpenses(Trip *trip);
+void setMealExpenses(Day *day, float breakfastCost, float lunchCost, float dinnerCost);
 
-float getMealExpenses(Trip *trip);
+float *getMealExpenses(Day *day);
 
 #endif
