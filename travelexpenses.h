@@ -71,4 +71,6 @@ void setMealExpenses(Day *day, float breakfastCost, float lunchCost, float dinne
 
 float *getMealExpenses(Day *day);
 
+float getMealTotal(Trip *trip);
+
 #endif

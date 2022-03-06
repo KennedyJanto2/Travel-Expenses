@@ -72,8 +72,8 @@ void setTaxiCost(Day *day, float cost){
 }
 
 float ReimbursableExpenses(Trip *trip){
-    int spent = 0;//TotalExpenses(trip);
-    int allowed = 0;//totalAllowableExpenses(trip);
+    int spent = TotalExpenses(trip);
+    int allowed = totalAllowableExpenses(trip);
     if (spent > allowed){
         return spent - allowed;
     }
@@ -81,8 +81,8 @@ float ReimbursableExpenses(Trip *trip){
 }
 
 float AmountSaved(Trip *trip){
-    int spent = 0;//TotalExpenses(trip);
-    int allowed = 0;//totalAllowableExpenses(trip);
+    int spent = TotalExpenses(trip);
+    int allowed = totalAllowableExpenses(trip);
 
     if (spent < allowed){
         return allowed - spent;
@@ -98,4 +98,14 @@ void setMealExpenses(Day *day, float breakfastCost, float lunchCost, float dinne
 
 float *getMealExpenses(Day *day){
     return day->meals;
+}
+
+float getMealTotal(Trip *trip){
+    float total = 0;
+    for (int day = 0; day < trip->daysSpent; day++){
+        total += trip->day[day].meals[0];
+        total += trip->day[day].meals[1];
+        total += trip->day[day].meals[2];
+    }
+    return total;
 }

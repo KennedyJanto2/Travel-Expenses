@@ -43,6 +43,8 @@ int main(){
         float *meals = getMealExpenses(&trip1.day[day]);
         printf("Day %i Meals: \n B:%.2f \n L:%.2f \n D:%.2f\n", day +1, meals[0], meals[1], meals[2]);
     }
+    //Get total meal cost for trip
+    printf("Total meal cost: %f\n", getMealTotal(&trip1));
 
     return 0;
 }
