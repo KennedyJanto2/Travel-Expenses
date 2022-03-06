@@ -12,17 +12,12 @@ Liangjie Shen
 // function declaration
 bool timeFormat(char[]);
 
-// glotbal variable
-int max = 10;
 
 int main()
 {
-    int day = 0;
-    char departTime[max];
-    char arrivalTime[max];
-    int count=0;
-    char x;
-    char y;
+    int day = 0, counter = 0;
+    char departTime[10] = "", arrivalTime[10] = "", departTimeChar, arrivalTimeChar;
+  
 
     printf("Welcome to Travel Expense Calculator!\n");
     printf("Please enter the following information for the trip:!\n\n");
@@ -38,10 +33,10 @@ int main()
 
     while(true){
         printf("The time of departure on the first day of the trip:[##:## AM/PM] ");
-        count = 0;
-        while((x = getchar()) != '\n'){
-            departTime[count] = x;
-            count++;
+        counter = 0;
+        while((departTimeChar = getchar()) != '\n'){
+            departTime[counter] = departTimeChar;
+            counter++;
         }
 
         if(timeFormat(departTime)!=1)
@@ -56,11 +51,11 @@ int main()
     while(true){
         printf("The time of arrival back home on the last day of the trip:[##:## AM/PM] ");
 
-        count = 0;
+        counter = 0;
 
-        while((y = getchar()) != '\n'){
-            arrivalTime[count] = y;
-            count++;
+        while((arrivalTimeChar = getchar()) != '\n'){
+            arrivalTime[counter] = arrivalTimeChar;
+            counter++;
         }
         
         if(timeFormat(arrivalTime)!= 1)
@@ -71,6 +66,9 @@ int main()
 
     }
 
+    
+
+    
 }
 
 bool timeFormat(char validTime[]){
