@@ -91,13 +91,13 @@ float totalAllowableExpenses(Trip *trip){
 
 float TotalExpenses(Trip *trip){
     float total = 0;
-    total += getParkingCost(&trip);
-    total += getTaxiCost(&trip);
-    total += getCarRentals(&trip);
-    total += getHotelExpenses(&trip);
-    total += getRegistrationFees(&trip);
-    total += getMealTrip(&trip);
-    total += getRoundTripAirfare(&trip);
+    total += getParkingCost(trip);
+    total += getTaxiCost(trip);
+    total += getCarRentals(trip);
+    total += getHotelExpenses(trip);
+    total += getRegistrationFees(trip);
+    total += getMealTotal(trip);
+    total += getRoundTripAirfare(trip);
 
     return total;
 }
