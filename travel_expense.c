@@ -196,7 +196,7 @@ int main()
         printf("\n");
 
     }
-    
+
     // The amounts of allowable meals
     printf("The amounts of allowable meals: $");
     scanf("%f",&allowableMealAmount);
