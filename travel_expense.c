@@ -11,17 +11,18 @@ Liangjie Shen
 
 // function declaration
 bool timeFormat(char[]);
-bool timeFormat2(char[]);
+
+// glotbal variable
+int max = 10;
 
 int main()
 {
     int day = 0;
-    char departTime[6];
-    char departTime1[6];
-    char departTime2[2];
-    char arrivalTime[6];
-    char arrivalTime1[6];
-    char arrivalTime2[2];
+    char departTime[max];
+    char arrivalTime[max];
+    int count=0;
+    char x;
+    char y;
 
     printf("Welcome to Travel Expense Calculator!\n");
     printf("Please enter the following information for the trip:!\n\n");
@@ -33,46 +34,47 @@ int main()
             printf("Number of days cannot be less than 1! Try again!\n");
     }
 
+    getchar();
+
     while(true){
         printf("The time of departure on the first day of the trip:[##:## AM/PM] ");
-        scanf("%s", departTime);
-        strcpy(departTime1,departTime);
-
-        bool rightFormat = timeFormat(departTime);
-        scanf("%s", departTime2);
-
-        if(rightFormat == 1 && timeFormat2(departTime2) == 1 ){ 
-            break;
+        count = 0;
+        while((x = getchar()) != '\n'){
+            departTime[count] = x;
+            count++;
         }
 
-        else
+        if(timeFormat(departTime)!=1)
+         
             printf("Wrong depart time format!\n");
+
+        else
+            break;
         
     }
 
     while(true){
         printf("The time of arrival back home on the last day of the trip:[##:## AM/PM] ");
-        scanf("%s", arrivalTime);
-        strcpy(arrivalTime1,arrivalTime);
-        bool rightFormat = timeFormat(arrivalTime);
-        scanf("%s", arrivalTime2);
 
-        if(rightFormat == 1 && timeFormat2(arrivalTime2) == 1 ){ 
-            break;
+        count = 0;
+
+        while((y = getchar()) != '\n'){
+            arrivalTime[count] = y;
+            count++;
         }
-
-        else
-            printf("Wrong depart time format!\n");
         
+        if(timeFormat(arrivalTime)!= 1)
+            printf("Wrong arrival time format!\n");
+        
+        else
+            break;
+
     }
 
-    printf("\n\n%s %s",departTime1,departTime2);
-    printf("\n\n%s %s",arrivalTime1,arrivalTime2);
 }
 
-
 bool timeFormat(char validTime[]){
-
+    
     int counter = 0;
     if(isdigit(validTime[counter])){ 
 
@@ -90,19 +92,15 @@ bool timeFormat(char validTime[]){
 
         if(validTime[counter] == ':'){
             counter++;
-            if(isdigit(validTime[counter]) && isdigit(validTime[counter+1]))
-                return true;
+            if(isdigit(validTime[counter]) && isdigit(validTime[counter+1])){
+                counter+=3;
+                if((validTime[counter] == 'A' || validTime[counter] == 'P') && validTime[counter+1] == 'M')
+                    return true;
+            }
         }
     }
 
     return false;
 
 
-}
-
-bool timeFormat2(char validTime2[]){
-    int counter = 0;
-    if((validTime2[counter] == 'A' || validTime2[counter] == 'P') && validTime2[counter+1] == 'M')
-        return true;
-    return false;
 }
