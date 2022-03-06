@@ -15,14 +15,18 @@ bool timeFormat(char[]);
 
 int main()
 {
-    int day = 0, counter = 0;
-    char departTime[10] = "", arrivalTime[10] = "", departTimeChar, arrivalTimeChar;
+    // variables and arrays declaration
+    int day = 0, counter = 0,nightStayed = 0;
+    char departTime[10] = "", arrivalTime[10] = "", departTimeChar, arrivalTimeChar, airfare;
+    double airfareAmount,carRentalAmount,milesDriven,vehicleExpense,parkingFee,taxiFee,hotelExpenses;
   
-
+    // welcome message
     printf("Welcome to Travel Expense Calculator!\n");
     printf("Please enter the following information for the trip:!\n\n");
 
+    // date input
     while(day < 1){
+        // loop until the user input is not less than 1
         printf("The total number of days spent on the trip[1 or more]: ");
         scanf("%d", &day);
         if(day < 1)
@@ -31,7 +35,9 @@ int main()
 
     getchar();
 
+    // departing time input
     while(true){
+        // loop until the departing time format is right
         printf("The time of departure on the first day of the trip:[##:## AM/PM] ");
         counter = 0;
         while((departTimeChar = getchar()) != '\n'){
@@ -48,7 +54,10 @@ int main()
         
     }
 
+    // Arrival time input
+
     while(true){
+        // loop until the arrival time format is right
         printf("The time of arrival back home on the last day of the trip:[##:## AM/PM] ");
 
         counter = 0;
@@ -65,6 +74,91 @@ int main()
             break;
 
     }
+    
+
+    // Round trip fare if any
+
+    printf("The amount of any round-trip airfare: $");
+    scanf("%lf",&airfareAmount);
+
+    while(airfareAmount<0){
+        printf("\nAmount cannot be negative!");
+        printf("The amount of any round-trip airfare: $");
+        scanf("%lf",&airfareAmount);
+    }
+
+    // Amount of car rental if any
+    printf("The amount of any car rentals: ");
+    scanf("%lf",&carRentalAmount);
+
+    while(carRentalAmount<0){
+        printf("\nAmount cannot be negative!");
+        printf("\nThe amount of any car rentals: $");
+        scanf("%lf",&carRentalAmount);
+    }
+
+    // Private car driven miles
+    printf("Miles driven, if a private vehicle was used: ");
+    scanf("%lf",&milesDriven);
+
+    while(milesDriven<0){
+        printf("\nAmount cannot be negative!");
+        printf("\nMiles driven, if a private vehicle was used: ");
+        scanf("%lf",&milesDriven);
+    }
+
+    vehicleExpense = milesDriven*0.27;
+
+    // Parking fee
+    printf("Parking Fee: $");
+    scanf("%lf",&parkingFee);
+
+    while(parkingFee<0){
+        printf("\nAmount cannot be negative!");
+        printf("\nParking Fee: $");
+        scanf("%lf",&parkingFee);
+    }
+
+    // Taxi fee
+    printf("Taxi Fee: $");
+    scanf("%lf",&taxiFee);
+
+    while(taxiFee<0){
+        printf("\nAmount cannot be negative!");
+        printf("\nTaxi Fee: $");
+        scanf("%lf",&taxiFee);
+    }
+
+    // Conference or seminar registration fees
+    printf("Conference or seminar registration fees: $");
+    scanf("%lf",&registrationFee);
+
+    while(registrationFee<0){
+        printf("\nAmount cannot be negative!");
+        printf("\nTaxi Fee: $");
+        scanf("%lf",&registrationFee);
+    }
+
+    // Hotel Expenses
+    printf("Number of nights stayed in hotel:");
+    scanf("%d",&nightStayed);
+
+    while(nightStayed<0){
+        printf("\nNumber of nights stayed cannot be negative!");
+        printf("\nNumber of nights stayed in hotel: ");
+        scanf("%d",&nightStayed);
+    }
+
+    // The amount of each meal eaten
+    
+    // The amounts of allowable meals
+    
+
+    
+
+    
+
+    
 
     
 
@@ -72,7 +166,7 @@ int main()
 }
 
 bool timeFormat(char validTime[]){
-    
+    // return true if the format of time is correct, false otherwise
     int counter = 0;
     if(isdigit(validTime[counter])){ 
 
