@@ -57,11 +57,11 @@ float totalAllowableExpenses(struct Trip *trip){
         total += 9;
     }
     //first day, breakfast allowed before 12 noon
-    if(getDepartTime(trip) < 12){
+    else if(getDepartTime(trip) < 12){
         total += 12;
     }
     //first day, dinner allowed before 6pm
-    if(getDepartTime(trip) < 18){
+    else if(getDepartTime(trip) < 18){
         total += 16;
     }
 
@@ -70,11 +70,11 @@ float totalAllowableExpenses(struct Trip *trip){
         total += 9;
     }
     //last day, lunch allowed after 1pm
-    if(getArrivalTime(trip) > 13){
+    else if(getArrivalTime(trip) > 13){
         total += 12;
     }
     //last day, dinner allowed after 7pm
-    if(getArrivalTime(trip) > 19){
+    else if(getArrivalTime(trip) > 19){
         total += 16;
     }
 
