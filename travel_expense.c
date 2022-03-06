@@ -18,7 +18,8 @@ int main()
     // variables and arrays declaration
     int day = 0, counter = 0,nightStayed = 0;
     char departTime[10] = "", arrivalTime[10] = "", departTimeChar, arrivalTimeChar, airfare;
-    double airfareAmount,carRentalAmount,milesDriven,vehicleExpense,parkingFee,taxiFee,hotelExpenses;
+    float airfareAmount,carRentalAmount,milesDriven,vehicleExpense,parkingFee,taxiFee,hotelExpenses,allowableMealAmount;
+
   
     // welcome message
     printf("Welcome to Travel Expense Calculator!\n");
@@ -79,64 +80,64 @@ int main()
     // Round trip fare if any
 
     printf("The amount of any round-trip airfare: $");
-    scanf("%lf",&airfareAmount);
+    scanf("%f",&airfareAmount);
 
     while(airfareAmount<0){
         printf("\nAmount cannot be negative!");
         printf("The amount of any round-trip airfare: $");
-        scanf("%lf",&airfareAmount);
+        scanf("%f",&airfareAmount);
     }
 
     // Amount of car rental if any
     printf("The amount of any car rentals: ");
-    scanf("%lf",&carRentalAmount);
+    scanf("%f",&carRentalAmount);
 
     while(carRentalAmount<0){
         printf("\nAmount cannot be negative!");
         printf("\nThe amount of any car rentals: $");
-        scanf("%lf",&carRentalAmount);
+        scanf("%f",&carRentalAmount);
     }
 
     // Private car driven miles
     printf("Miles driven, if a private vehicle was used: ");
-    scanf("%lf",&milesDriven);
+    scanf("%f",&milesDriven);
 
     while(milesDriven<0){
         printf("\nAmount cannot be negative!");
         printf("\nMiles driven, if a private vehicle was used: ");
-        scanf("%lf",&milesDriven);
+        scanf("%f",&milesDriven);
     }
 
     vehicleExpense = milesDriven*0.27;
 
     // Parking fee
     printf("Parking Fee: $");
-    scanf("%lf",&parkingFee);
+    scanf("%f",&parkingFee);
 
     while(parkingFee<0){
         printf("\nAmount cannot be negative!");
         printf("\nParking Fee: $");
-        scanf("%lf",&parkingFee);
+        scanf("%f",&parkingFee);
     }
 
     // Taxi fee
     printf("Taxi Fee: $");
-    scanf("%lf",&taxiFee);
+    scanf("%f",&taxiFee);
 
     while(taxiFee<0){
         printf("\nAmount cannot be negative!");
         printf("\nTaxi Fee: $");
-        scanf("%lf",&taxiFee);
+        scanf("%f",&taxiFee);
     }
 
     // Conference or seminar registration fees
     printf("Conference or seminar registration fees: $");
-    scanf("%lf",&registrationFee);
+    scanf("%f",&registrationFee);
 
     while(registrationFee<0){
         printf("\nAmount cannot be negative!");
         printf("\nTaxi Fee: $");
-        scanf("%lf",&registrationFee);
+        scanf("%f",&registrationFee);
     }
 
     // Hotel Expenses
@@ -151,17 +152,20 @@ int main()
 
     // The amount of each meal eaten
     
+    
     // The amounts of allowable meals
-    
+    printf("The amounts of allowable meals: $");
+    scanf("%f",&allowableMealAmount);
+
+    while(allowableMealAmount<0){
+        printf("\nAmount cannot be negative!");
+        printf("\nThe amounts of allowable meals: $");
+        scanf("%f",&allowableMealAmount);
+    }
+
+    printf("\n%d",nightStayed);
 
     
-
-    
-
-    
-
-    
-
     
 }
 
