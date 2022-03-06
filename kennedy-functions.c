@@ -14,8 +14,8 @@ void setDepartTime(Trip *trip, int time){
     trip->departTime = time;
 }
 
-void setHotelExpenses(Day *day, float hotelExpenses){
-    day->hotelCost = hotelExpenses;
+void setHotelExpenses(Trip *trip, float hotelExpenses){
+    trip->hotelCost = hotelExpenses;
 }
 
 void setRoundTripAirfare(Trip *trip, float airCost){
@@ -37,12 +37,7 @@ int getDepartTime(Trip *trip){
 }
 
 float getHotelExpenses(Trip *trip){
-    float hotelFee = 0;
-    int daysSpent = getDaysSpent(trip);
-    for(int day = 0; day < daysSpent; day++){
-        hotelFee += trip->day[day].hotelCost;
-    }
-    return hotelFee;
+    return trip->hotelCost;
 }
 
 float getRoundTripAirfare(Trip *trip){
@@ -78,7 +73,7 @@ float totalAllowableExpenses(Trip *trip){
         total += 16;
     }
 
-    int days = trip->daysSpend - 2;
+    int days = trip->daysSpent - 2;
     //every other day
     for(int i = 0; i < days; i++){
         total += 6;         //parking fees
@@ -101,7 +96,7 @@ float TotalExpenses(Trip *trip){
     total += getCarRentals(&trip);
     total += getHotelExpenses(&trip);
     total += getRegistrationFees(&trip);
-    total += getMealExpenses(&trip);
+    total += getMealTrip(&trip);
     total += getRoundTripAirfare(&trip);
 
     return total;
