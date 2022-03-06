@@ -18,7 +18,8 @@ int main()
     // variables and arrays declaration
     int day = 0, counter = 0,nightStayed = 0;
     char departTime[10] = "", arrivalTime[10] = "", departTimeChar, arrivalTimeChar, airfare;
-    float airfareAmount,carRentalAmount,milesDriven,vehicleExpense,parkingFee,taxiFee,hotelExpenses,allowableMealAmount;
+    float airfareAmount,carRentalAmount,milesDriven,vehicleExpense,parkingFee,taxiFee;
+    float hotelExpenses,allowableMealAmount,registrationFee;
 
   
     // welcome message
@@ -33,7 +34,7 @@ int main()
         if(day < 1)
             printf("Number of days cannot be less than 1! Try again!\n");
     }
-
+    /*
     getchar();
 
     // departing time input
@@ -150,8 +151,51 @@ int main()
         scanf("%d",&nightStayed);
     }
 
+    */
+
     // The amount of each meal eaten
+    float breakfastCost[day],lunchCost[day],dinnerCost[day];
+    float breakfast,lunch,dinner;
     
+    printf("Please enter the amount spent on each meal below:\n");
+    for(int i = 0; i < day; i++){
+        // Day number
+        printf("Day %d:\n",i+1);
+
+        breakfast = -1;
+        lunch = -1;
+        dinner = -1;
+
+        // Breakfast cost
+        while(breakfast<0){
+            printf("Breakfast: $");
+            scanf("%f",&breakfast);
+            breakfastCost[i] = breakfast;
+            if(breakfast<0)
+                printf("Amount cannot be negative!\n");
+        }
+        
+        // Lunch cost
+        while(lunch<0){
+            printf("Lunch: $");
+            scanf("%f",&lunch);
+            lunchCost[i] = lunch;
+            if(lunch<0)
+                printf("Amount cannot be negative!\n");
+        }
+
+        // Dinner cost
+        while(dinner<0){
+            printf("Dinner: $");
+            scanf("%f",&dinner);
+            dinnerCost[i] = dinner;
+            if(dinner<0)
+                printf("Amount cannot be negative!\n");
+        }
+
+        printf("\n");
+
+    }
     
     // The amounts of allowable meals
     printf("The amounts of allowable meals: $");
@@ -162,8 +206,6 @@ int main()
         printf("\nThe amounts of allowable meals: $");
         scanf("%f",&allowableMealAmount);
     }
-
-    printf("\n%d",nightStayed);
 
     
     
