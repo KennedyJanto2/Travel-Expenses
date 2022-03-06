@@ -44,4 +44,31 @@ void setTaxiCost(Day *day, float cost);
 float ReimbursableExpenses(Trip *trip);
 
 float AmountSaved(Trip *trip);
+
+void setRegistrationFees(Trip *trip, int registrationFee);
+
+float getRegistrationFees(Trip *trip);
+
+void setArrivalTime(Trip *trip, int time);
+
+int getArrivalTime(Trip *trip);
+
+void setDepartTime(Trip *trip, int time);
+
+int getDepartTme(Trip *trip);
+
+void setHotelExpenses(Trip *trip, float hotelExpenses);
+
+float getHotelExpenses(Trip *trip);
+
+void setRoundTripAirfare(Trip *trip, float airCost);
+
+float totalAllowableExpenses(Trip *trip);
+
+float TotalExpenses(Trip *trip);
+
+void setMealExpenses(Trip *trip);
+
+float getMealExpenses(Trip *trip);
+
 #endif
