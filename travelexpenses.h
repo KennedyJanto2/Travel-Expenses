@@ -7,9 +7,6 @@ typedef struct Day {
     float taxiCost;
     float milesDriven;
     float parkingCost;
-    float breakfastCost;
-    float lunchCost;
-    float dinnerCost;
     float meals[3]; //Breakfast = [0], Lunch = [1], Dinner = [2]
 } Day;
 
