@@ -59,33 +59,33 @@ float totalAllowableExpenses(Trip *trip){
     int days = trip->daysSpent;
 
     //first day, breakfast allowed before 7am
-    if(getDepartTime(trip) < 7 && count > 0){
+    if(getDepartTime(trip) < 700 && count > 0){
         total += 9;
         count--;
     }
     //first day, breakfast allowed before 12 noon
-    if(getDepartTime(trip) < 12 && count > 0){
+    if(getDepartTime(trip) < 1200 && count > 0){
         total += 12;
         count--;
     }
     //first day, dinner allowed before 6pm
-    if(getDepartTime(trip) < 18 && count > 0){
+    if(getDepartTime(trip) < 1800 && count > 0){
         total += 16;
         count--;
     }
 
     //last day, breakfast allowed after 8am
-    if(getArrivalTime(trip) > 8 && count > 0){
+    if(getArrivalTime(trip) > 800 && count > 0){
         total += 9;
         count--;
     }
     //last day, lunch allowed after 1pm
-    if(getArrivalTime(trip) > 13 && count > 0){
+    if(getArrivalTime(trip) > 1300 && count > 0){
         total += 12;
         count--;
     }
     //last day, dinner allowed after 7pm
-    if(getArrivalTime(trip) > 19 && count > 0){
+    if(getArrivalTime(trip) > 1900 && count > 0){
         total += 16;
         count--;
     }
