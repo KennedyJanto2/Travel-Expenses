@@ -98,6 +98,7 @@ float TotalExpenses(Trip *trip){
     total += getRegistrationFees(trip);
     total += getMealTotal(trip);
     total += getRoundTripAirfare(trip);
+    total += getMilesDriven(trip) * 0.27;
 
     return total;
 }

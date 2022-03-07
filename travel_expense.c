@@ -8,6 +8,7 @@ Liangjie Shen
 #include <string.h> // string library including strlen()
 #include <ctype.h> // isdigit()
 #include <stdbool.h> // boolean function
+#include "travelexpenses.h"
 
 // function declaration
 bool timeFormat(char[]);
@@ -19,7 +20,8 @@ int main()
     int day = 0, counter = 0,nightStayed = 0;
     char departTime[10] = "", arrivalTime[10] = "", departTimeChar, arrivalTimeChar, airfare;
     float airfareAmount,carRentalAmount,milesDriven,vehicleExpense,parkingFee,taxiFee;
-    float hotelExpenses,allowableMealAmount,registrationFee;
+    float hotelCost,allowableMealAmount,registrationFee;
+    Trip trip;
 
   
     // welcome message
@@ -34,6 +36,7 @@ int main()
         if(day < 1)
             printf("Number of days cannot be less than 1! Try again!\n");
     }
+    setDaysSpent(&trip, day);
     
     getchar();
 
@@ -55,6 +58,8 @@ int main()
             break;
         
     }
+    printf("Depart time: %s", departTime);
+    setDepartTime(&trip, strtol(departTime));
 
     // Arrival time input
 
@@ -76,6 +81,8 @@ int main()
             break;
 
     }
+    printf("Arrival time: %s", arrivalTime);
+    setArrivalTime(&trip, strtol(arrivalTime));
     
 
     // Round trip fare if any
@@ -88,6 +95,7 @@ int main()
         printf("The amount of any round-trip airfare: $");
         scanf("%f",&airfareAmount);
     }
+    setRoundTripAirfare(&trip, airfareAmount);
 
     // Amount of car rental if any
     printf("The amount of any car rentals: ");
@@ -98,6 +106,7 @@ int main()
         printf("\nThe amount of any car rentals: $");
         scanf("%f",&carRentalAmount);
     }
+    setCarRentals(&trip, carRentalAmount);
 
     // Private car driven miles
     printf("Miles driven, if a private vehicle was used: ");
@@ -108,8 +117,9 @@ int main()
         printf("\nMiles driven, if a private vehicle was used: ");
         scanf("%f",&milesDriven);
     }
+    setMilesDriven(&trip, milesDriven);
 
-    vehicleExpense = milesDriven*0.27;
+    //vehicleExpense = milesDriven*0.27;
 
     // Parking fee
     printf("Parking Fee: $");
@@ -120,6 +130,7 @@ int main()
         printf("\nParking Fee: $");
         scanf("%f",&parkingFee);
     }
+    setParkingCost(&trip, parkingFee);
 
     // Taxi fee
     printf("Taxi Fee: $");
@@ -130,6 +141,7 @@ int main()
         printf("\nTaxi Fee: $");
         scanf("%f",&taxiFee);
     }
+    setTaxiCost(&trip, taxiFee);
 
     // Conference or seminar registration fees
     printf("Conference or seminar registration fees: $");
@@ -140,8 +152,9 @@ int main()
         printf("\nTaxi Fee: $");
         scanf("%f",&registrationFee);
     }
+    setRegistrationFees(&trip, registrationFee);
 
-    // Hotel Expenses
+    // Hotel nights stayed
     printf("Number of nights stayed in hotel:");
     scanf("%d",&nightStayed);
 
@@ -151,6 +164,16 @@ int main()
         scanf("%d",&nightStayed);
     }
 
+    // Hotel costs
+    printf("Hotel cost per night: $");
+    scanf("%f",&hotelCost);
+
+    while(hotelCost<0){
+        printf("\nAmount cannot be negative!");
+        printf("\nHotel cost per night: $");
+        scanf("%f",&hotelCost);
+    }
+    setHotelExpenses(&trip, nightStayed * hotelCost);
     
 
     // The amount of each meal eaten
@@ -197,6 +220,10 @@ int main()
 
     }
 
+    for (int i=0; i<day; i++){
+        setMealExpenses(&trip.day[day], breakfastCost[i], lunchCost[i], dinnerCost[i]);
+    }
+
     // The amounts of allowable meals
     printf("The amounts of allowable meals: $");
     scanf("%f",&allowableMealAmount);
@@ -206,6 +233,7 @@ int main()
         printf("\nThe amounts of allowable meals: $");
         scanf("%f",&allowableMealAmount);
     }
+    
     
 }
 

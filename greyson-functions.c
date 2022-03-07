@@ -1,5 +1,6 @@
 #include "travelexpenses.h"
 #include <stdio.h>
+#include <string.h>
 
 float getCarRentals(Trip *trip){
     return trip->rentalCost;
@@ -108,4 +109,10 @@ float getMealTotal(Trip *trip){
         total += trip->day[day].meals[2];
     }
     return total;
+}
+
+char *printTrip(Trip *trip){
+    printf("Car rentals %f \n", getCarRentals(trip));
+    printf("Days spent: %f \n", getDaysSpent(trip));
+    printf("");
 }
