@@ -83,4 +83,6 @@ float getMealTotal(Trip *trip);
 
 void printTrip(Trip *trip);
 
+int timeToInt(char *str);
+
 #endif

@@ -1,6 +1,7 @@
 #include "travelexpenses.h"
 #include <stdio.h>
 #include <string.h>
+#include <stdlib.h>
 
 float getCarRentals(Trip *trip){
     return trip->rentalCost;
@@ -74,17 +75,31 @@ float AmountSaved(Trip *trip){
 
 void printTrip(Trip *trip){
     printf("\nDays spent: %i \n", getDaysSpent(trip));
-    printf("Round trip airfare: %.2f\n", getRoundTripAirfare(trip));
+    printf("Round trip airfare: $%.2f\n", getRoundTripAirfare(trip));
     printf("Depart time: %i \n", getDepartTime(trip));
     printf("Arrival time: %i\n", getArrivalTime(trip));
-    printf("Car rentals %.2f \n", getCarRentals(trip));
-    printf("Miles driven: %.2f \n", getMilesDriven(trip));
-    printf("Parking cost: %.2f \n", getParkingCost(trip));
-    printf("Taxi cost: %.2f \n", getTaxiCost(trip));
-    printf("Registration fees: %.2f \n", getRegistrationFees(trip));
-    printf("Hotel expenses: %.2f\n", getHotelExpenses(trip));
-    printf("Total allowable expenses: %.2f \n", totalAllowableExpenses(trip));
-    printf("Total expenses: %.2f \n", TotalExpenses(trip));
-    printf("Reimbursable expenses: %.2f \n", ReimbursableExpenses(trip));
-    printf("Amount saved: %.2f \n", AmountSaved(trip));
+    printf("Car rentals: $%.2f \n", getCarRentals(trip));
+    printf("Miles driven: %.2f mi \n", getMilesDriven(trip));
+    printf("Parking cost: $%.2f \n", getParkingCost(trip));
+    printf("Taxi cost: $%.2f \n", getTaxiCost(trip));
+    printf("Registration fees: $%.2f \n", getRegistrationFees(trip));
+    printf("Hotel expenses: $%.2f\n", getHotelExpenses(trip));
+    printf("Total allowable expenses: $%.2f \n", totalAllowableExpenses(trip));
+    printf("Total expenses: $%.2f \n", TotalExpenses(trip));
+    printf("Reimbursable expenses: $%.2f \n", ReimbursableExpenses(trip));
+    printf("Amount saved: $%.2f \n", AmountSaved(trip));
+}
+
+int timeToInt(char *str){
+    int hours;
+    int minutes;
+    char *p = strpbrk(str, " ") + 1;
+    char *end;
+    hours = strtol(str, &end, 10) * 100;
+    minutes = strtol(end+1, NULL, 10);
+    if (*p == 'P'){
+        hours += 1200;
+    }
+
+    return hours + minutes;
 }

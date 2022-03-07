@@ -59,8 +59,7 @@ int main()
             break;
         
     }
-    setDepartTime(&trip, strtol(departTime, NULL, 10));
-
+    setDepartTime(&trip, timeToInt(departTime));
     // Arrival time input
 
     while(true){
@@ -81,7 +80,7 @@ int main()
             break;
 
     }
-    setArrivalTime(&trip, strtol(arrivalTime, NULL, 10));
+    setArrivalTime(&trip, timeToInt(arrivalTime));
     
 
     // Round trip fare if any
