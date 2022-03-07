@@ -176,7 +176,7 @@ int main()
     
 
     // The amount of each meal eaten
-    float breakfastCost[day],lunchCost[day],dinnerCost[day];
+    float totalMealExpense;
     float breakfast,lunch,dinner;
     
     printf("Please enter the amount spent on each meal below:\n");
@@ -192,7 +192,7 @@ int main()
         while(breakfast<0){
             printf("Breakfast: $");
             scanf("%f",&breakfast);
-            breakfastCost[i] = breakfast;
+            totalMealExpense += breakfast;
             if(breakfast<0)
                 printf("Amount cannot be negative!\n");
         }
@@ -201,7 +201,7 @@ int main()
         while(lunch<0){
             printf("Lunch: $");
             scanf("%f",&lunch);
-            lunchCost[i] = lunch;
+            totalMealExpense += lunch;
             if(lunch<0)
                 printf("Amount cannot be negative!\n");
         }
@@ -210,7 +210,7 @@ int main()
         while(dinner<0){
             printf("Dinner: $");
             scanf("%f",&dinner);
-            dinnerCost[i] = dinner;
+            totalMealExpense += dinner;
             if(dinner<0)
                 printf("Amount cannot be negative!\n");
         }
@@ -219,21 +219,21 @@ int main()
 
     }
 
-    for (int i=0; i<day; i++){
-        setMealExpenses(&trip.day[day], breakfastCost[i], lunchCost[i], dinnerCost[i]);
-    }
+    setMealExpenses(&trip, totalMealExpense);
 
     // The amounts of allowable meals
-    printf("The amounts of allowable meals: $");
+    printf("The amounts of allowable meals: ");
     scanf("%f",&allowableMealAmount);
+    setAllowableMealAmount(&trip, allowableMealAmount);
 
     while(allowableMealAmount<0){
         printf("\nAmount cannot be negative!");
         printf("\nThe amounts of allowable meals: $");
         scanf("%f",&allowableMealAmount);
     }
-    
-    //printf("%f", TotalExpenses(&trip));
+
+    float total = TotalExpenses(&trip);
+    //printf("Total cost is: %.2f", total);
     printTrip(&trip);
 }
 

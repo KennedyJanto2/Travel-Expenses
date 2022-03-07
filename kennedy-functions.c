@@ -1,4 +1,5 @@
 #include "travelexpenses.h"
+#include <stdio.h>
 
 //Setters:
 
@@ -44,46 +45,85 @@ float getRoundTripAirfare(Trip *trip){
     return trip->airfareCost;
 }
 
+void setAllowableMealAmount(Trip *trip, float allowableMealsCount){
+    trip->allowableMeals = allowableMealsCount;
+}
+
+float getAllowableMealAmount(Trip *trip){
+    return trip->allowableMeals;
+}
+
 float totalAllowableExpenses(Trip *trip){
     float total = 0;
+    float count = getAllowableMealAmount(trip);
+    int days = trip->daysSpent;
 
     //first day, breakfast allowed before 7am
-    if(getDepartTime(trip) < 7){
+    if(getDepartTime(trip) < 7 && count > 0){
         total += 9;
+        count--;
     }
     //first day, breakfast allowed before 12 noon
-    else if(getDepartTime(trip) < 12){
+    if(getDepartTime(trip) < 12 && count > 0){
         total += 12;
+        count--;
     }
     //first day, dinner allowed before 6pm
-    else if(getDepartTime(trip) < 18){
+    if(getDepartTime(trip) < 18 && count > 0){
         total += 16;
+        count--;
     }
 
     //last day, breakfast allowed after 8am
-    if(getArrivalTime(trip) > 8){
+    if(getArrivalTime(trip) > 8 && count > 0){
         total += 9;
+        count--;
     }
     //last day, lunch allowed after 1pm
-    else if(getArrivalTime(trip) > 13){
+    if(getArrivalTime(trip) > 13 && count > 0){
         total += 12;
+        count--;
     }
     //last day, dinner allowed after 7pm
-    else if(getArrivalTime(trip) > 19){
+    if(getArrivalTime(trip) > 19 && count > 0){
         total += 16;
+        count--;
     }
 
-    int days = trip->daysSpent - 2;
+    //allowable meal cost
+    while(count > 0){
+        total += 9;         //breakfast
+        count--;
+        if(count <= 0)
+            break;
+        total += 12;        //lunch
+        count--;
+        if(count <= 0)
+            break;
+        total += 16;        //dinner
+        count--;
+        if(count <= 0)
+            break;
+    }
+
+    //first and last day other fees
+    if(days <= 1){
+        total += 6;         //parking fees
+        total += 10;        //taxi fee
+        total += 90;        //hotel fee
+    }
+    else{
+        total += 12;         //parking fees * 2
+        total += 20;        //taxi fee * 2
+        total += 180;        //hotel fee * 2
+    }
+    
+    days = days - 2;
     //every other day
     for(int i = 0; i < days; i++){
         total += 6;         //parking fees
         total += 10;        //taxi fee
         total += 90;        //hotel fee
-
-        //allowable meal cost
-        total += 9;         //breakfast
-        total += 12;        //lunch
-        total += 16;        //dinner
     }
 
     return total;
@@ -91,6 +131,7 @@ float totalAllowableExpenses(Trip *trip){
 
 float TotalExpenses(Trip *trip){
     float total = 0;
+ 
     total += getParkingCost(trip);
     total += getTaxiCost(trip);
     total += getCarRentals(trip);

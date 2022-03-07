@@ -2,13 +2,14 @@
 #define TRAVELEXPENSES_H
 
 #define MAXTRIPLENGTH 30
-
+/*
 typedef struct Day {
     float meals[3]; //Breakfast = [0], Lunch = [1], Dinner = [2]
 } Day;
-
+*/
 typedef struct Trip {     //Allows use of Trip alone instead of struct Trip
-    Day day[MAXTRIPLENGTH]; //Perhaps change to dynamically set size of array.
+    //Day day[MAXTRIPLENGTH]; //Perhaps change to dynamically set size of array.
+    float mealCost;
     float parkingCost;
     float milesDriven;
     float rentalCost;
@@ -19,6 +20,7 @@ typedef struct Trip {     //Allows use of Trip alone instead of struct Trip
     float hotelCost;        //Does this belong in day or trip?
     float eventCost;        //Does this belong in day or trip?
     int daysSpent;
+    float allowableMeals;
 } Trip;
 
 float getCarRentals(Trip *trip);
@@ -69,9 +71,13 @@ float totalAllowableExpenses(Trip *trip);
 
 float TotalExpenses(Trip *trip);
 
-void setMealExpenses(Day *day, float breakfastCost, float lunchCost, float dinnerCost);
+void setMealExpenses(Trip *trip, float totalMealExpense);
 
-float *getMealExpenses(Day *day);
+void setAllowableMealAmount(Trip *trip, float allowableMeals);
+
+float getAllowableMealAmount(Trip *trip);
+
+float getMealExpenses(Trip *trip);
 
 float getMealTotal(Trip *trip);
 

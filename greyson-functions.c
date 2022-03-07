@@ -13,109 +13,67 @@ void setCarRentals(Trip *trip, float cost){
     trip->rentalCost = cost;
 }
 
-int getDaysSpent(Trip *trip){ //Awaiting testing, seems like a hacky way to implement
+int getDaysSpent(Trip *trip){
     return trip->daysSpent; 
 }
 
-void setDaysSpent(Trip *trip, int days){ //Not sure how to interpret this or whether to do
+void setDaysSpent(Trip *trip, int days){
     trip->daysSpent = days;
 }
 
 float getMilesDriven(Trip *trip){
-    /*float miles = 0;
-    int daysSpent = getDaysSpent(trip);
-    for (int day=0; day < daysSpent; day++){
-        miles += trip->day[day].milesDriven;
-    }
-    return miles;*/
     return trip->milesDriven;
 }
 
-void setMilesDriven(Trip *trip, float miles){//Day *day, float miles){
-   /* if (miles < 0){
-        return;
-    }
-    day->milesDriven = miles;*/
+void setMilesDriven(Trip *trip, float miles){
     trip->milesDriven = miles;
 }
 
 float getParkingCost(Trip *trip){
-    /*float cost = 0;
-    int daysSpent = getDaysSpent(trip);
-    for (int day=0; day < daysSpent; day++){
-        cost += trip->day[day].parkingCost;
-    }
-    return cost;*/
     return trip->parkingCost;
 }
 
-void setParkingCost(Trip *trip, float cost){//Day *day, float cost){
-    /*if (cost < 0){
-        return;
-    }
-    day->parkingCost = cost;*/
+void setParkingCost(Trip *trip, float cost){
     trip->parkingCost = cost;
 }
 
 float getTaxiCost(Trip *trip){
-    /*float cost = 0;
-    int daysSpent = getDaysSpent(trip);
-    for (int day=0; day < daysSpent; day++){
-        cost += trip->day[day].taxiCost;
-    }
-    return cost;*/
     return trip->taxiCost;
 }
 
-void setTaxiCost(Trip *trip, float cost){ //Day *day, float cost){
-   /* if (cost < 0){
-        return;
-    }
-    day->taxiCost = cost;*/
+void setTaxiCost(Trip *trip, float cost){
     trip->taxiCost = cost;
 }
 
 float ReimbursableExpenses(Trip *trip){
-    int spent = TotalExpenses(trip);
-    int allowed = totalAllowableExpenses(trip);
+    float spent = TotalExpenses(trip);
+    float allowed = totalAllowableExpenses(trip);
     if (spent > allowed){
         return spent - allowed;
     }
     return 0;
 }
 
-float AmountSaved(Trip *trip){
-    int spent = TotalExpenses(trip);
-    int allowed = totalAllowableExpenses(trip);
+void setMealExpenses(Trip *trip, float total){
+    trip->mealCost = total;
+}
 
-    if (spent < allowed){
+float getMealTotal(Trip *trip){
+    return trip->mealCost;
+}
+
+float AmountSaved(Trip *trip){
+    float spent = TotalExpenses(trip);
+    float allowed = totalAllowableExpenses(trip);
+
+    if(spent < allowed){
         return allowed - spent;
     }
     return 0;
 }
 
-void setMealExpenses(Day *day, float breakfastCost, float lunchCost, float dinnerCost){
-    day->meals[0] = breakfastCost;
-    day->meals[1] = lunchCost;
-    day->meals[2] = dinnerCost;
-}
-
-float *getMealExpenses(Day *day){
-    return day->meals;
-}
-
-float getMealTotal(Trip *trip){
-    float total = 0;
-    for (int day = 0; day < trip->daysSpent; day++){
-        total += trip->day[day].meals[0];
-        total += trip->day[day].meals[1];
-        total += trip->day[day].meals[2];
-    }
-    return total;
-}
-
 void printTrip(Trip *trip){
-    printf("Days spent: %i \n", getDaysSpent(trip));
+    printf("\nDays spent: %i \n", getDaysSpent(trip));
     printf("Round trip airfare: %.2f\n", getRoundTripAirfare(trip));
     printf("Depart time: %i \n", getDepartTime(trip));
     printf("Arrival time: %i\n", getArrivalTime(trip));
