@@ -4,15 +4,15 @@
 #define MAXTRIPLENGTH 30
 
 typedef struct Day {
-    float taxiCost;
-    float milesDriven;
-    float parkingCost;
     float meals[3]; //Breakfast = [0], Lunch = [1], Dinner = [2]
 } Day;
 
 typedef struct Trip {     //Allows use of Trip alone instead of struct Trip
     Day day[MAXTRIPLENGTH]; //Perhaps change to dynamically set size of array.
+    float parkingCost;
+    float milesDriven;
     float rentalCost;
+    float taxiCost;
     float airfareCost;
     int departTime;
     int arrivalTime;
@@ -31,15 +31,15 @@ void setDaysSpent(Trip *trip, int days);
 
 float getMilesDriven(Trip *trip);
 
-void setMilesDriven(Day *day, float miles);
+void setMilesDriven(Trip *trip, float miles);
 
 float getParkingCost(Trip *trip);
 
-void setParkingCost(Day *day, float cost);
+void setParkingCost(Trip *trip, float cost);
 
 float getTaxiCost(Trip *trip);
 
-void setTaxiCost(Day *day, float cost);
+void setTaxiCost(Trip *trip, float cost);
 
 float ReimbursableExpenses(Trip *trip);
 
@@ -55,13 +55,15 @@ int getArrivalTime(Trip *trip);
 
 void setDepartTime(Trip *trip, int time);
 
-int getDepartTme(Trip *trip);
+int getDepartTime(Trip *trip);
 
 void setHotelExpenses(Trip *trip, float hotelExpenses);
 
 float getHotelExpenses(Trip *trip);
 
 void setRoundTripAirfare(Trip *trip, float airCost);
+
+float getRoundTripAirfare(Trip *trip);
 
 float totalAllowableExpenses(Trip *trip);
 
@@ -72,5 +74,7 @@ void setMealExpenses(Day *day, float breakfastCost, float lunchCost, float dinne
 float *getMealExpenses(Day *day);
 
 float getMealTotal(Trip *trip);
+
+void printTrip(Trip *trip);
 
 #endif

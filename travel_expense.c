@@ -8,6 +8,7 @@ Liangjie Shen
 #include <string.h> // string library including strlen()
 #include <ctype.h> // isdigit()
 #include <stdbool.h> // boolean function
+#include <stdlib.h>
 #include "travelexpenses.h"
 
 // function declaration
@@ -36,9 +37,9 @@ int main()
         if(day < 1)
             printf("Number of days cannot be less than 1! Try again!\n");
     }
-    setDaysSpent(&trip, day);
     
     getchar();
+    setDaysSpent(&trip, day);
 
     // departing time input
     while(true){
@@ -58,8 +59,7 @@ int main()
             break;
         
     }
-    printf("Depart time: %s", departTime);
-    setDepartTime(&trip, strtol(departTime));
+    setDepartTime(&trip, strtol(departTime, NULL, 10));
 
     // Arrival time input
 
@@ -81,8 +81,7 @@ int main()
             break;
 
     }
-    printf("Arrival time: %s", arrivalTime);
-    setArrivalTime(&trip, strtol(arrivalTime));
+    setArrivalTime(&trip, strtol(arrivalTime, NULL, 10));
     
 
     // Round trip fare if any
@@ -234,7 +233,8 @@ int main()
         scanf("%f",&allowableMealAmount);
     }
     
-    
+    //printf("%f", TotalExpenses(&trip));
+    printTrip(&trip);
 }
 
 bool timeFormat(char validTime[]){
