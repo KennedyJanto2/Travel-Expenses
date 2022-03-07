@@ -46,7 +46,7 @@ void setTaxiCost(Trip *trip, float cost){
     trip->taxiCost = cost;
 }
 
-float ReimbursableExpenses(Trip *trip){
+float ReimbursableExpenses(Trip *trip){//Returns amount to be payed by businessperson
     float spent = TotalExpenses(trip);
     float allowed = totalAllowableExpenses(trip);
     if (spent > allowed){
@@ -59,11 +59,11 @@ void setMealExpenses(Trip *trip, float total){
     trip->mealCost = total;
 }
 
-float getMealTotal(Trip *trip){
+float getMealTotal(Trip *trip){//Returns total cost of all meals on business trip
     return trip->mealCost;
 }
 
-float AmountSaved(Trip *trip){
+float AmountSaved(Trip *trip){ //Returns amount saved on trip by businessperson
     float spent = TotalExpenses(trip);
     float allowed = totalAllowableExpenses(trip);
 
@@ -73,7 +73,7 @@ float AmountSaved(Trip *trip){
     return 0;
 }
 
-void printTrip(Trip *trip){
+void printTrip(Trip *trip){ //Printout by calling all get functions and expense reports
     printf("\nDays spent: %i \n", getDaysSpent(trip));
     printf("Round trip airfare: $%.2f\n", getRoundTripAirfare(trip));
     printf("Depart time: %i \n", getDepartTime(trip));
@@ -90,7 +90,7 @@ void printTrip(Trip *trip){
     printf("Amount saved: $%.2f \n", AmountSaved(trip));
 }
 
-int timeToInt(char *str){
+int timeToInt(char *str){ // Returns a time string formatted as (00:00 AM/PM) as a 24 hour integer representation
     int hours;
     int minutes;
     char *p = strpbrk(str, " ") + 1;

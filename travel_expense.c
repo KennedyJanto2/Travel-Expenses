@@ -8,7 +8,6 @@ Liangjie Shen
 #include <string.h> // string library including strlen()
 #include <ctype.h> // isdigit()
 #include <stdbool.h> // boolean function
-#include <stdlib.h>
 #include "travelexpenses.h"
 
 // function declaration
@@ -116,8 +115,6 @@ int main()
         scanf("%f",&milesDriven);
     }
     setMilesDriven(&trip, milesDriven);
-
-    //vehicleExpense = milesDriven*0.27;
 
     // Parking fee
     printf("Parking Fee: $");
@@ -232,7 +229,6 @@ int main()
     }
 
     float total = TotalExpenses(&trip);
-    //printf("Total cost is: %.2f", total);
     printTrip(&trip);
 }
 

@@ -2,13 +2,8 @@
 #define TRAVELEXPENSES_H
 
 #define MAXTRIPLENGTH 30
-/*
-typedef struct Day {
-    float meals[3]; //Breakfast = [0], Lunch = [1], Dinner = [2]
-} Day;
-*/
+
 typedef struct Trip {     //Allows use of Trip alone instead of struct Trip
-    //Day day[MAXTRIPLENGTH]; //Perhaps change to dynamically set size of array.
     float mealCost;
     float parkingCost;
     float milesDriven;
