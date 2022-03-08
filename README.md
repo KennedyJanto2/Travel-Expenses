@@ -1,4 +1,5 @@
-Travel Expenses Calculator
+                                                        Travel Expenses Calculator
+                                                             
 
 CODE IMPLEMENTATION
 
@@ -69,6 +70,7 @@ The amount saved by the businessperson if the expenses were under the total allo
 
 
 Input Validation: 
+
 Do not accept negative numbers for any dollar amount or for miles driven in a private vehicle. 
 
 Do not accept numbers less than 1 for the number of days. 
