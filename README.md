@@ -1,10 +1,11 @@
-Travel Expenses 
+Travel Expenses Calculator
 
 CODE IMPLEMENTATION
 
 gcc travel_expense.c travelexpenses.h greyson-functions.c kennedy-functions.c -o expense
 
 ./expense
+
 
 
 PROGRAM DETAIL
