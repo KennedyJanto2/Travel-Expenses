@@ -1,5 +1,14 @@
 Travel Expenses 
 
+CODE IMPLEMENTATION
+
+gcc travel_expense.c travelexpenses.h greyson-functions.c kennedy-functions.c -o expense
+
+./expense
+
+
+PROGRAM DETAIL
+
 This program is designed and written by a team of students.
 
 It calculates and displays the total travel expenses of a businessperson on a 
@@ -66,6 +75,4 @@ Do not accept numbers less than 1 for the number of days.
 Only accept valid times for the time of departure and the time of arrival.
 
 
-CODE IMPLEMENTATION
-gcc travel_expense.c travelexpenses.h greyson-functions.c kennedy-functions.c -o expense
-./expense
+
