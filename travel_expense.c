@@ -1,6 +1,6 @@
 /* 
 CS2600 Project2: Travel Expenses
-Liangjie Shen
+Liangjie Shen: Main Function
 2/7/2022
 */
 
