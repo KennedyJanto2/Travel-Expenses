@@ -144,7 +144,7 @@ int main()
 
     while(registrationFee<0){
         printf("\nAmount cannot be negative!");
-        printf("\nTaxi Fee: $");
+        printf("\nConference or seminar registration fees: $");
         scanf("%f",&registrationFee);
     }
     setRegistrationFees(&trip, registrationFee);
